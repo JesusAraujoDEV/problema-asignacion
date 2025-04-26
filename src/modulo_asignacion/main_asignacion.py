@@ -1,6 +1,6 @@
-from programador import Programador
-from tarea import Tarea
-from asignacion_transporte import AsignacionTransporte
+from .programador import Programador
+from .tarea import Tarea
+from .asignacion_transporte import AsignacionTransporte
 
 def crear_datos_ejemplo():
     # Crear programadores
