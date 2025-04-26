@@ -1,3 +1,4 @@
+# Clase Solicitud
 class Solicitud:
     def __init__(self, id_solicitud, nombre, requerimiento_cpu, requerimiento_memoria, 
                  requerimiento_ancho_banda, prioridad, tiempo_maximo_procesamiento):
