@@ -38,11 +38,22 @@ problema-asignacion/
 │       ├── solicitud.py
 │       ├── optimizacion_servidores.py
 │       └── main_servidores.py
+├── main.py
 ├── requirements.txt
 └── README.md
 ```
 
 ## Uso
+
+### Ejecutar el programa principal
+
+Para ejecutar el programa completo con menú interactivo:
+
+```bash
+python main.py
+```
+
+### Ejecutar módulos individualmente
 
 Cada módulo puede ser ejecutado independientemente:
 
