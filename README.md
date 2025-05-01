@@ -1,94 +1,125 @@
-# Sistema de Optimización de Recursos
+Claro, aquí tienes una versión **mejorada, clara y profesional** de tu `README.md`, con formato corregido, estilo consistente y descripciones más precisas:
 
-Este sistema implementa dos módulos de optimización basados en programación lineal para resolver problemas de asignación de recursos:
+---
 
-1. **Módulo de Asignación de Programadores a Tareas con Restricciones de Transporte**
-2. **Optimización de la Asignación de Solicitudes a Servidores**
+```markdown
+# 📊 Sistema de Optimización de Recursos
 
-## Requisitos
+Este sistema interactivo resuelve problemas de asignación de recursos mediante técnicas de **programación lineal**. Incluye dos módulos principales:
+
+1. **Asignación de Programadores a Tareas con Restricciones de Transporte**
+2. **Asignación de Solicitudes a Servidores en la Nube**
+
+---
+
+## ⚙️ Requisitos
 
 - Python 3.6 o superior
-- Bibliotecas requeridas:
-  - numpy
-  - scipy
-  - pulp
-  - pandas
+- Bibliotecas necesarias:
 
-Para instalar las dependencias:
-
-\`\`\`
+```bash
 pip install numpy scipy pulp pandas
-\`\`\`
+```
 
-## Uso
+---
 
-Ejecute el archivo principal para acceder al menú del sistema:
+## 🚀 Ejecución
 
-\`\`\`
+Ejecute el menú principal del sistema desde consola:
+
+```bash
 python main.py
-\`\`\`
+```
 
-### Módulo 1: Asignación de Programadores a Tareas
+Desde allí podrá acceder a cualquiera de los dos módulos de optimización.
 
-Este módulo resuelve el problema de asignar programadores a tareas considerando restricciones de transporte y ubicación geográfica.
+---
 
-**Características:**
-- Permite ingresar datos por consola o desde archivo
-- Implementa métodos de resolución de problemas de transporte:
-  - Método de la Esquina Noroeste
-  - Método de Costo Mínimo
+## 🧠 Módulo 1: Asignación de Programadores a Tareas
+
+Este módulo resuelve el problema de asignar programadores a tareas distribuidas geográficamente, considerando tanto su capacidad como los costos de transporte y desempeño.
+
+### Características:
+
+- Ingreso de datos por consola o desde archivo
+- Métodos de solución inicial:
+  - Esquina Noroeste
+  - Costo Mínimo
   - Aproximación de Vogel
-- Optimiza usando programación lineal (PuLP)
-- Genera reportes detallados de la asignación
+- Optimización final con **programación lineal** usando **PuLP**
+- Generación de reportes detallados (por tarea y programador)
+- Balanceo automático de oferta y demanda
 
-### Módulo 2: Asignación de Solicitudes a Servidores
+---
 
-Este módulo optimiza la asignación de solicitudes a servidores en un entorno de computación en la nube, minimizando el tiempo de respuesta y balanceando la carga de trabajo.
+## 🌐 Módulo 2: Asignación de Solicitudes a Servidores
 
-**Características:**
-- Permite ingresar datos por consola o desde archivo
-- Considera prioridades de solicitudes
-- Implementa el Método Húngaro para optimización
-- Verifica restricciones de capacidad y prioridad
-- Genera reportes detallados de la asignación
+Este módulo optimiza la asignación de solicitudes a servidores considerando **prioridades**, **tiempos de procesamiento** y **restricciones de capacidad**.
 
-## Formato de Archivos de Entrada
+### Características:
 
-### Para el Módulo de Programadores:
-\`\`\`
-N           # Número de programadores
-M           # Número de tareas
-C[0][0] C[0][1] ... C[0][M-1]  # Matriz de costos (fila 1)
+- Ingreso de datos por consola o desde archivo
+- Ajuste automático por prioridad de solicitudes
+- Solución óptima mediante el **Método Húngaro**
+- Verificación de:
+  - Capacidad de servidores
+  - Asignación coherente con las prioridades
+- Reportes con distribución de carga y tiempo total
+
+---
+
+## 📂 Formato de Archivos de Entrada
+
+### 📌 Módulo de Programadores (`programadores.txt`)
+
+```txt
+N               # Número de programadores
+M               # Número de tareas
+C[0][0] ... C[0][M-1]         # Fila 1 de matriz de costos
 ...
-C[N-1][0] C[N-1][1] ... C[N-1][M-1]  # Matriz de costos (fila N)
-S[0] S[1] ... S[N-1]  # Capacidades de programadores
-D[0] D[1] ... D[M-1]  # Demandas de tareas
-\`\`\`
+C[N-1][0] ... C[N-1][M-1]     # Fila N
+S[0] S[1] ... S[N-1]          # Capacidades de programadores
+D[0] D[1] ... D[M-1]          # Demandas de tareas
+```
 
-### Para el Módulo de Servidores:
-\`\`\`
-S           # Número de servidores
-R           # Número de solicitudes
-C[0][0] C[0][1] ... C[0][R-1]  # Matriz de costos (fila 1)
+### 📌 Módulo de Servidores (`servidores.txt`)
+
+```txt
+S               # Número de servidores
+R               # Número de solicitudes
+C[0][0] ... C[0][R-1]         # Fila 1 de matriz de costos
 ...
-C[S-1][0] C[S-1][1] ... C[S-1][R-1]  # Matriz de costos (fila S)
-P[0] P[1] ... P[R-1]  # Prioridades de solicitudes (opcional)
-CAP[0] CAP[1] ... CAP[S-1]  # Capacidades de servidores (opcional)
-\`\`\`
+C[S-1][0] ... C[S-1][R-1]     # Fila S
+P[0] ... P[R-1]               # (Opcional) Prioridades de solicitudes
+CAP[0] ... CAP[S-1]           # (Opcional) Capacidades de servidores
+```
 
-## Ejemplos
+---
 
-El sistema incluye archivos de ejemplo para probar ambos módulos:
-- `programadores.txt`
-- `servidores.txt`
+## 🧪 Archivos de Ejemplo
 
-## Estructura del Proyecto
+Incluidos en el repositorio:
 
-\`\`\`
+- `programadores.txt` – datos para el módulo de tareas
+- `servidores.txt` – datos para el módulo de servidores
+
+---
+
+## 📁 Estructura del Proyecto
+
+```text
 .
-├── main.py                         # Punto de entrada principal
-├── modulo_asignacion_programadores.py  # Módulo 1
-├── modulo_asignacion_servidores.py     # Módulo 2
-├── programadores.txt     # Datos de ejemplo para el Módulo 1
-├── servidores.txt        # Datos de ejemplo para el Módulo 2
-└── README.md                       # Este archivo
+├── main.py                               # Menú principal del sistema
+├── modulo_asignacion_programadores.py    # Módulo de Programadores
+├── modulo_asignacion_servidores.py       # Módulo de Servidores
+├── programadores.txt                     # Ejemplo de entrada para módulo 1
+├── servidores.txt                        # Ejemplo de entrada para módulo 2
+└── README.md                             # Este archivo
+```
+
+---
+
+## 🧑‍💻 Autor
+
+Desarrollado como parte de un proyecto de optimización y programación lineal. Para fines académicos y educativos.
+```
