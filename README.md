@@ -121,4 +121,3 @@ Incluidos en el repositorio:
 ## 🧑‍💻 Autor
 
 Desarrollado como parte de un proyecto de optimización y programación lineal. Para fines académicos y educativos.
-```
