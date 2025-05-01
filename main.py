@@ -1,88 +1,87 @@
+import os
 import sys
-from src.modulo_asignacion.main_asignacion import main as main_asignacion
-from src.modulo_servidores.main_servidores import main as main_servidores
+from modulo_asignacion_programadores import MainProgramadores
+from modulo_asignacion_servidores import MainServidores
 
-def mostrar_menu():
-    """
-    Muestra el menú principal de opciones al usuario y captura su selección.
-    
-    Returns:
-        str: La opción seleccionada por el usuario.
-    """
-    print("\n=== Sistema de Asignación y Optimización ===")
-    print("1. Módulo de Asignación de Programadores")
-    print("2. Módulo de Optimización de Servidores")
-    print("3. Ejecutar ambos módulos")
-    print("4. Salir")
-    
-    # Validación de la entrada del usuario
-    while True:
-        try:
-            opcion = input("Seleccione una opción (1-4): ")
-            if opcion in ["1", "2", "3", "4"]:
-                return opcion
-            else:
-                print("Opción no válida. Por favor, seleccione una opción del 1 al 4.")
-        except KeyboardInterrupt:
-            # Manejar la interrupción de teclado (Ctrl+C)
-            print("\n\nOperación cancelada por el usuario.")
-            return "4"  # Devolver la opción de salir
-        except Exception as e:
-            print(f"Error inesperado: {str(e)}")
-            print("Por favor, intente nuevamente.")
+class MenuPrincipal:
+    def __init__(self):
+        pass
 
-def main():
-    """
-    Función principal que controla el flujo del programa.
-    Muestra el menú, procesa la selección del usuario y ejecuta los módulos correspondientes.
-    """
-    try:
+    def limpiar_pantalla(self):
+        """Limpia la pantalla de la consola."""
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    def mostrar_banner(self):
+        """Muestra un banner decorativo para el programa."""
+        print("=" * 70)
+        print("                SISTEMA DE OPTIMIZACIÓN DE RECURSOS                ")
+        print("=" * 70)
+        print("  Desarrollado para resolver problemas de programación lineal")
+        print("  Métodos implementados: Transporte y Húngaro")
+        print("-" * 70)
+
+    def validar_opcion(self,mensaje, opciones_validas):
+        
         while True:
-            # Obtener la opción seleccionada por el usuario
-            opcion = mostrar_menu()
+            try:
+                opcion = input(mensaje)
+                if opcion in opciones_validas:
+                    return opcion
+                else:
+                    print(f"Error: Opción no válida. Las opciones válidas son: {', '.join(opciones_validas)}")
+            except Exception as e:
+                print(f"Error inesperado: {str(e)}. Por favor, intente de nuevo.")
+
+    def mostrar_menu_principal(self):
+        """Muestra el menú principal del programa."""
+        print("\nMÓDULOS DISPONIBLES:")
+        print("1. Asignación de Programadores a Tareas con Restricciones de Transporte")
+        print("2. Optimización de la Asignación de Solicitudes a Servidores")
+        print("0. Salir")
+        
+        return self.validar_opcion("\nSeleccione una opción (0-2): ", ['0', '1', '2'])
+
+    def main(self):
+        """Función principal que ejecuta el programa."""
+        while True:
+            self.limpiar_pantalla()
+            self.mostrar_banner()
+            opcion = self.mostrar_menu_principal()
             
-            # Procesar la opción seleccionada
-            if opcion == "1":
-                # Ejecuta solo el módulo de asignación de programadores
-                print("\nEjecutando Módulo de Asignación de Programadores...")
+            if opcion == '1':
+                self.limpiar_pantalla()
+                print("=" * 70)
+                print("      MÓDULO DE ASIGNACIÓN DE PROGRAMADORES A TAREAS      ")
+                print("=" * 70)
                 try:
-                    main_asignacion()
+                    MainProgramadores().main()
                 except Exception as e:
-                    print(f"\nError en el módulo de asignación: {str(e)}")
-                    print("Volviendo al menú principal...")
-            elif opcion == "2":
-                # Ejecuta solo el módulo de optimización de servidores
-                print("\nEjecutando Módulo de Optimización de Servidores...")
+                    print(f"\nError al ejecutar el módulo: {str(e)}")
+                input("\nPresione Enter para volver al menú principal...")
+                
+            elif opcion == '2':
+                self.limpiar_pantalla()
+                print("=" * 70)
+                print("      MÓDULO DE ASIGNACIÓN DE SOLICITUDES A SERVIDORES      ")
+                print("=" * 70)
                 try:
-                    main_servidores()
+                    MainServidores().main()
                 except Exception as e:
-                    print(f"\nError en el módulo de servidores: {str(e)}")
-                    print("Volviendo al menú principal...")
-            elif opcion == "3":
-                # Ejecuta ambos módulos secuencialmente
-                print("\nEjecutando ambos módulos...")
-                try:
-                    main_asignacion()
-                    print("\n" + "="*50 + "\n")  # Separador visual entre módulos
-                    main_servidores()
-                except Exception as e:
-                    print(f"\nError al ejecutar los módulos: {str(e)}")
-                    print("Volviendo al menú principal...")
-            elif opcion == "4":
-                # Termina la ejecución del programa
-                print("\n¡Hasta luego!")
+                    print(f"\nError al ejecutar el módulo: {str(e)}")
+                input("\nPresione Enter para volver al menú principal...")
+                
+            elif opcion == '0':
+                self.limpiar_pantalla()
+                print("Gracias por utilizar el Sistema de Optimización de Recursos.")
+                print("¡Hasta pronto!")
                 sys.exit(0)
-    except KeyboardInterrupt:
-        # Manejar la interrupción global (Ctrl+C)
-        print("\n\nPrograma interrumpido por el usuario.")
-        print("¡Hasta luego!")
-        sys.exit(0)
-    except Exception as e:
-        # Capturar cualquier otra excepción no manejada
-        print(f"\nError inesperado en el programa principal: {str(e)}")
-        print("El programa se cerrará.")
-        sys.exit(1)
 
 if __name__ == "__main__":
-    # Punto de entrada del programa cuando se ejecuta directamente
-    main() 
+    try:
+        MenuPrincipal().main()
+    except KeyboardInterrupt:
+        print("\n\nPrograma interrumpido por el usuario.")
+        sys.exit(0)
+    except Exception as e:
+        print(f"\nError inesperado: {str(e)}")
+        sys.exit(1)

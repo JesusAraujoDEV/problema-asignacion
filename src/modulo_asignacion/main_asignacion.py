@@ -51,16 +51,7 @@ def crear_datos_ejemplo():
     return programadores, tareas
 
 def leer_entero_positivo(mensaje, minimo=1):
-    """
-    Lee un número entero positivo desde la consola con validación.
     
-    Args:
-        mensaje: Texto a mostrar para solicitar el dato
-        minimo: Valor mínimo aceptable
-        
-    Returns:
-        int: Número entero validado
-    """
     while True:
         try:
             valor = int(input(mensaje))
@@ -72,16 +63,7 @@ def leer_entero_positivo(mensaje, minimo=1):
             print("Error: Debe ingresar un número entero válido.")
 
 def leer_float_positivo(mensaje, minimo=0):
-    """
-    Lee un número decimal positivo desde la consola con validación.
     
-    Args:
-        mensaje: Texto a mostrar para solicitar el dato
-        minimo: Valor mínimo aceptable
-        
-    Returns:
-        float: Número decimal validado
-    """
     while True:
         try:
             valor = float(input(mensaje))
@@ -93,12 +75,7 @@ def leer_float_positivo(mensaje, minimo=0):
             print("Error: Debe ingresar un número decimal válido.")
 
 def ingresar_datos_por_consola():
-    """
-    Solicita al usuario ingresar todos los datos necesarios para el problema de asignación.
     
-    Returns:
-        tuple: (programadores, tareas)
-    """
     try:
         print("\n=== Ingreso de datos para el problema de asignación ===")
         

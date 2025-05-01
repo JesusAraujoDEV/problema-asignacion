@@ -3,12 +3,7 @@ from .solicitud import Solicitud
 from .optimizacion_servidores import OptimizacionServidores
 
 def crear_datos_ejemplo():
-    """
-    Crea datos de ejemplo para el problema de optimización de servidores.
     
-    Returns:
-        tuple: (servidores, solicitudes)
-    """
     # Creación de servidores con sus capacidades de recursos
     # Los parámetros son: id, nombre, capacidad_cpu(GHz), capacidad_memoria(GB), capacidad_ancho_banda(Mbps)
     servidores = [
@@ -39,16 +34,7 @@ def crear_datos_ejemplo():
     return servidores, solicitudes
 
 def leer_entero_positivo(mensaje, minimo=1):
-    """
-    Lee un número entero positivo desde la consola con validación.
     
-    Args:
-        mensaje: Texto a mostrar para solicitar el dato
-        minimo: Valor mínimo aceptable
-        
-    Returns:
-        int: Número entero validado
-    """
     while True:
         try:
             valor = int(input(mensaje))
@@ -60,16 +46,7 @@ def leer_entero_positivo(mensaje, minimo=1):
             print("Error: Debe ingresar un número entero válido.")
 
 def leer_float_positivo(mensaje, minimo=0):
-    """
-    Lee un número decimal positivo desde la consola con validación.
     
-    Args:
-        mensaje: Texto a mostrar para solicitar el dato
-        minimo: Valor mínimo aceptable
-        
-    Returns:
-        float: Número decimal validado
-    """
     while True:
         try:
             valor = float(input(mensaje))
@@ -81,12 +58,7 @@ def leer_float_positivo(mensaje, minimo=0):
             print("Error: Debe ingresar un número decimal válido.")
 
 def ingresar_datos_por_consola():
-    """
-    Solicita al usuario ingresar todos los datos necesarios para el problema de optimización de servidores.
     
-    Returns:
-        tuple: (servidores, solicitudes)
-    """
     try:
         print("\n=== Ingreso de datos para la optimización de servidores ===")
         
@@ -167,10 +139,7 @@ def ingresar_datos_por_consola():
         return None, None
 
 def main():
-    """
-    Función principal que ejecuta el módulo de optimización de servidores.
-    Crea los datos, resuelve el problema y muestra los resultados.
-    """
+    
     print("\n=== Módulo de Optimización de Servidores ===")
     
     # Preguntar si usar datos de ejemplo o ingresar datos
