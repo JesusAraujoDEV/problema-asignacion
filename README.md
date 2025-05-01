@@ -1,7 +1,6 @@
 
 ---
 
-```md
 # 📊 Sistema de Optimización de Recursos
 
 Este sistema interactivo resuelve problemas de asignación de recursos mediante técnicas de **programación lineal**. Incluye dos módulos principales:
